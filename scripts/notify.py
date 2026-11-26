@@ -110,8 +110,28 @@ body = [f"@maikewsantos {'Weekly summary' if weekly else 'Event update'} for the
 if events:
     body += ["**What changed**", ""] + [f"- {e}" for e in events] + [""]
 if weekly:
-    body += ["**All indicators.** Change is in each series' own units (percentage points for rates and % series): vs about 7 days earlier for daily series, vs the previous weekly reading for Focus, and vs the prior month for monthly series.", "",
+    body += ["## Key numbers", "", "Change is in each series' own units (percentage points for rates and % series): vs about 7 days earlier for daily series, vs the previous weekly reading for Focus, and vs the prior month for monthly series.", "",
              "| Indicator | Latest | Units | Observation | Change |", "|---|---:|---|---|---|"] + rows + [""]
+# Charts (static versions of the dashboard charts), rendered by scripts/charts.py into email/<stamp>/
+stamp = now_utc.strftime("%Y-%m-%d-%H%M")
+img_base = f"https://raw.githubusercontent.com/maikewsantos/brazil-dashboard/main/email/{stamp}"
+groups = [("Exchange rate", ["ptax", "reer", "vol"]), ("Inflation and monetary policy", ["ipca", "focus", "selic", "real_rate", "carry"]),
+          ("Activity", ["ibcbr", "unemp"]), ("External and fiscal", ["ca", "fiscal"])]
+body += ["---", "", "## Charts (last 5 years)", ""]
+for gname, ids in groups:
+    body += [f"### {gname}", ""]
+    for sid in ids:
+        s_ = SERIES["series"][sid]
+        if not s_.get("lines"):
+            continue
+        latest = "; ".join(f"{n if len(s_['lines']) > 1 else 'Latest'} {fmt(p_[-1][1], sid)} ({fdate(p_[-1][0], s_)})"
+                           for n, p_ in s_["lines"].items() if p_)
+        stale = "" if s_["status"] == "ok" else f" **{s_['status'].upper()}: last good data shown.**"
+        body += [f"**{s_['title']}**: {s_['units']}, {s_['frequency'].lower()}. {latest}.{stale}", "",
+                 f'<img src="{img_base}/{sid}.png" width="600" alt="{s_["title"]} chart">', "",
+                 f"<sub>Source: {s_['source']}. {s_['convention']} Transformation: {s_['transformation']}</sub>", ""]
+(ROOT / "notify_stamp.txt").write_text(stamp)
+
 body += [
     f"Last successful refresh: {ts(lsr)}. " + "Each indicator has its own latest observation date" + (" (shown above)" if weekly else "") + ", which lags the refresh because agencies publish with delays.",
     "",

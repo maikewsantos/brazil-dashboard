@@ -76,6 +76,11 @@ jobs:
           out=$(python scripts/notify.py)
           echo "$out"
           if [ "$out" = "SEND=1" ]; then
+            stamp=$(cat notify_stamp.txt)
+            python scripts/charts.py "email/$stamp"
+            git add "email/$stamp"
+            git commit -q -m "Email charts $stamp"
+            git pull -q --rebase origin main && git push -q
             gh label create dashboard-update --color 1d76db --description "Automated Brazil dashboard email" 2>/dev/null || true
             url=$(gh issue create --title "$(cat notify_title.txt)" --body-file notify.md --label dashboard-update)
             echo "Created $url"
