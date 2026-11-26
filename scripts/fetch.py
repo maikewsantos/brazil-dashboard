@@ -110,24 +110,20 @@ def fetch_sidra(table: int, var: int) -> pd.Series:
 
 def fetch_focus_ipca_12m() -> pd.Series:
     """Focus survey: median expected IPCA over the next 12 months (smoothed series)."""
+    # All fields of this endpoint are Edm.String (including Data), so dates are filtered in pandas.
     params = {
-        "$filter": f"Indicador eq 'IPCA' and Suavizada eq 'S' and baseCalculo eq 0 and Data ge '{FETCH_START.isoformat()}'",
+        "$filter": "Indicador eq 'IPCA' and Suavizada eq 'S' and baseCalculo eq 0",
         "$select": "Data,Mediana",
         "$orderby": "Data",
-        "$top": "20000",
+        "$top": "50000",
         "$format": "json",
     }
-    try:
-        vals = get(FOCUS_URL, params, tries=2).json()["value"]
-    except RuntimeError:
-        # Fallback if the baseCalculo field is not accepted by this endpoint
-        params["$filter"] = f"Indicador eq 'IPCA' and Suavizada eq 'S' and Data ge '{FETCH_START.isoformat()}'"
-        vals = get(FOCUS_URL, params).json()["value"]
-        print("[info] Focus: baseCalculo filter not accepted; used fallback filter")
+    vals = get(FOCUS_URL, params).json()["value"]
     if not vals:
         raise RuntimeError("Focus: empty response")
     df = pd.DataFrame(vals)
     s = pd.Series(pd.to_numeric(df["Mediana"]).values, index=pd.to_datetime(df["Data"]))
+    s = s[s.index >= pd.Timestamp(FETCH_START)]
     return s[~s.index.duplicated(keep="last")].sort_index()
 
 
@@ -168,6 +164,7 @@ def to_points(s: pd.Series, digits: int = 6) -> list:
 # Validation
 # --------------------------------------------------------------------------- #
 def validate(sid: str, s: pd.Series, spec: dict) -> None:
+    s = s[s.index >= pd.Timestamp(FETCH_START)]
     if s.empty:
         raise ValueError(f"{sid}: no observations")
     n = len(s[s.index >= pd.Timestamp(SAMPLE_START)])
