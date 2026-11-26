@@ -1,0 +1,100 @@
+{
+ "run_utc": "2026-11-26T01:35:11Z",
+ "run_status": "partial: 3 of 12 indicators failed",
+ "last_successful_refresh_utc": null,
+ "errors": {
+  "ipca": "ValueError: ipca/IPCA, 12-month change: 175 values outside plausible range [-5, 30], e.g. 1980-12-01=99.25",
+  "focus": "RuntimeError: GET failed for https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoInflacao12Meses {'$filter': \"Indicador eq 'IPCA' and Suavizada eq 'S' and Data ge '2009-01-01'\", '$select': 'Data,Mediana', '$orderby': 'Data', '$top': '20000', '$format': 'json'}: HTTP 400: /*{\n  \"codigo\" : 400,\n  \"mensagem\" : \"The types 'Edm.Boolean' and 'Edm.String' are not compatible.\"\n}*/",
+  "real_rate": "RuntimeError: GET failed for https://olinda.bcb.gov.br/olinda/servico/Expectativas/versao/v1/odata/ExpectativasMercadoInflacao12Meses {'$filter': \"Indicador eq 'IPCA' and Suavizada eq 'S' and Data ge '2009-01-01'\", '$select': 'Data,Mediana', '$orderby': 'Data', '$top': '20000', '$format': 'json'}: HTTP 400: /*{\n  \"codigo\" : 400,\n  \"mensagem\" : \"The types 'Edm.Boolean' and 'Edm.String' are not compatible.\"\n}*/"
+ },
+ "indicators": [
+  {
+   "indicator": "Nominal exchange rate",
+   "line": "BRL per USD",
+   "units": "BRL per USD",
+   "latest_date": "2026-11-25",
+   "latest_value": 5.8825,
+   "status": "ok"
+  },
+  {
+   "indicator": "Real effective exchange rate",
+   "line": "REER (2010 = 100)",
+   "units": "Index, 2010 average = 100",
+   "latest_date": "2026-08-01",
+   "latest_value": 159.935,
+   "status": "ok"
+  },
+  {
+   "indicator": "Policy rate (Selic target)",
+   "line": "Selic target",
+   "units": "% per year",
+   "latest_date": "2026-11-26",
+   "latest_value": 13.75,
+   "status": "ok"
+  },
+  {
+   "indicator": "Carry: Selic minus Fed funds",
+   "line": "Selic minus Fed funds (midpoint)",
+   "units": "Percentage points",
+   "latest_date": "2026-11-26",
+   "latest_value": 9.875,
+   "status": "ok"
+  },
+  {
+   "indicator": "BRL realized volatility",
+   "line": "21-day realized vol",
+   "units": "% annualized",
+   "latest_date": "2026-11-25",
+   "latest_value": 34.16,
+   "status": "ok"
+  },
+  {
+   "indicator": "Economic activity (IBC-Br)",
+   "line": "IBC-Br, y/y",
+   "units": "% change vs. same month a year earlier",
+   "latest_date": "2026-09-01",
+   "latest_value": -0.01,
+   "status": "ok"
+  },
+  {
+   "indicator": "Unemployment rate",
+   "line": "Unemployment rate",
+   "units": "% of labour force",
+   "latest_date": "2026-09-01",
+   "latest_value": 5.2,
+   "status": "ok"
+  },
+  {
+   "indicator": "Current account and FDI",
+   "line": "Current account",
+   "units": "% of GDP, 12-month sum",
+   "latest_date": "2026-09-01",
+   "latest_value": -2.33,
+   "status": "ok"
+  },
+  {
+   "indicator": "Current account and FDI",
+   "line": "FDI inflows",
+   "units": "% of GDP, 12-month sum",
+   "latest_date": "2026-09-01",
+   "latest_value": 3.43,
+   "status": "ok"
+  },
+  {
+   "indicator": "Fiscal: gross debt and primary balance",
+   "line": "Gross general government debt",
+   "units": "% of GDP",
+   "latest_date": "2026-09-01",
+   "latest_value": 82.95,
+   "status": "ok"
+  },
+  {
+   "indicator": "Fiscal: gross debt and primary balance",
+   "line": "Primary balance (12m)",
+   "units": "% of GDP",
+   "latest_date": "2026-09-01",
+   "latest_value": -0.52,
+   "status": "ok"
+  }
+ ]
+}
