@@ -110,15 +110,22 @@ def fetch_sidra(table: int, var: int) -> pd.Series:
 
 def fetch_focus_ipca_12m() -> pd.Series:
     """Focus survey: median expected IPCA over the next 12 months (smoothed series)."""
-    # All fields of this endpoint are Edm.String (including Data), so dates are filtered in pandas.
-    params = {
-        "$filter": "Indicador eq 'IPCA' and Suavizada eq 'S' and baseCalculo eq 0",
-        "$select": "Data,Mediana",
-        "$orderby": "Data",
-        "$top": "50000",
-        "$format": "json",
-    }
-    vals = get(FOCUS_URL, params).json()["value"]
+    # Olinda (OData) needs spaces encoded as %20, not "+", so the query string is built by hand.
+    # Dates are filtered in pandas. If the full filter is rejected, fall back to filtering on
+    # the indicator only and apply the remaining conditions locally.
+    from urllib.parse import quote
+
+    def query(flt: str) -> list:
+        qs = "&".join([f"$filter={quote(flt, safe='')}", "$select=Data,Mediana,Suavizada,baseCalculo",
+                       "$orderby=Data", "$top=100000", "$format=json"])
+        return get(f"{FOCUS_URL}?{qs}", tries=2).json()["value"]
+
+    try:
+        vals = query("Indicador eq 'IPCA' and Suavizada eq 'S' and baseCalculo eq 0")
+    except RuntimeError as e:
+        print(f"[info] Focus: full filter rejected ({str(e)[-120:]}); using indicator-only filter")
+        vals = query("Indicador eq 'IPCA'")
+        vals = [v for v in vals if str(v.get("Suavizada")) in ("S", "True", "true") and int(v.get("baseCalculo", 0)) == 0]
     if not vals:
         raise RuntimeError("Focus: empty response")
     df = pd.DataFrame(vals)
