@@ -6,10 +6,16 @@ on:
     # 21:17 UTC = 15:17 Chicago / 18:17 Brasília (after the day's PTAX and most releases).
     - cron: "17 11 * * 1-5"
     - cron: "17 21 * * 1-5"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      weekly:
+        description: "Send the weekly summary email now (test)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
+  issues: write
   pages: write
   id-token: write
 
@@ -60,6 +66,21 @@ jobs:
           path: _site
       - id: deploy
         uses: actions/deploy-pages@v4
+
+      - name: Email update (GitHub issue mentioning the owner, closed immediately)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WEEKLY: ${{ github.event.inputs.weekly == 'true' && '1' || '0' }}
+        run: |
+          out=$(python scripts/notify.py)
+          echo "$out"
+          if [ "$out" = "SEND=1" ]; then
+            gh label create dashboard-update --color 1d76db --description "Automated Brazil dashboard email" 2>/dev/null || true
+            url=$(gh issue create --title "$(cat notify_title.txt)" --body-file notify.md --label dashboard-update)
+            echo "Created $url"
+            gh issue close "$url" --reason completed
+          fi
 
       - name: Fail the run if any indicator failed (triggers GitHub's failure email)
         if: env.FETCH_FAILED == '1'
