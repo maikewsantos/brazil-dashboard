@@ -1,19 +1,19 @@
 {
- "run_utc": "2026-11-26T02:05:46Z",
+ "run_utc": "2026-11-26T20:14:14Z",
  "run_status": "ok",
- "last_successful_refresh_utc": "2026-11-26T02:05:46Z",
+ "last_successful_refresh_utc": "2026-11-26T20:14:14Z",
  "errors": {},
  "indicators": [
   {
    "indicator": "Nominal exchange rate",
    "line": "BRL per USD",
    "units": "BRL per USD",
-   "latest_date": "2026-11-25",
-   "latest_value": 5.8825,
+   "latest_date": "2026-11-26",
+   "latest_value": 5.7446,
    "status": "ok",
    "previous_date": "2026-11-25",
    "previous_value": 5.8825,
-   "new_observation": false
+   "new_observation": true
   },
   {
    "indicator": "Real effective exchange rate",
@@ -85,12 +85,12 @@
    "indicator": "BRL realized volatility",
    "line": "21-day realized vol",
    "units": "% annualized",
-   "latest_date": "2026-11-25",
-   "latest_value": 34.16,
+   "latest_date": "2026-11-26",
+   "latest_value": 19.92,
    "status": "ok",
    "previous_date": "2026-11-25",
    "previous_value": 34.16,
-   "new_observation": false
+   "new_observation": true
   },
   {
    "indicator": "Economic activity (IBC-Br)",
@@ -118,23 +118,23 @@
    "indicator": "Current account and FDI",
    "line": "Current account",
    "units": "% of GDP, 12-month sum",
-   "latest_date": "2026-09-01",
-   "latest_value": -2.33,
+   "latest_date": "2026-10-01",
+   "latest_value": -2.34,
    "status": "ok",
    "previous_date": "2026-09-01",
    "previous_value": -2.33,
-   "new_observation": false
+   "new_observation": true
   },
   {
    "indicator": "Current account and FDI",
    "line": "FDI inflows",
    "units": "% of GDP, 12-month sum",
-   "latest_date": "2026-09-01",
-   "latest_value": 3.43,
+   "latest_date": "2026-10-01",
+   "latest_value": 3.38,
    "status": "ok",
    "previous_date": "2026-09-01",
    "previous_value": 3.43,
-   "new_observation": false
+   "new_observation": true
   },
   {
    "indicator": "Fiscal: gross debt and primary balance",
