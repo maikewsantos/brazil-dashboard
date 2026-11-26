@@ -1,7 +1,7 @@
 {
- "run_utc": "2026-11-26T01:43:14Z",
+ "run_utc": "2026-11-26T01:44:50Z",
  "run_status": "ok",
- "last_successful_refresh_utc": "2026-11-26T01:43:14Z",
+ "last_successful_refresh_utc": "2026-11-26T01:44:50Z",
  "errors": {},
  "indicators": [
   {
@@ -43,7 +43,10 @@
    "units": "% (expected IPCA, next 12 months)",
    "latest_date": "2026-11-19",
    "latest_value": 5.41,
-   "status": "ok"
+   "status": "ok",
+   "previous_date": "2026-11-19",
+   "previous_value": 5.41,
+   "new_observation": false
   },
   {
    "indicator": "Policy rate (Selic target)",
@@ -62,7 +65,10 @@
    "units": "% per year",
    "latest_date": "2026-11-01",
    "latest_value": 7.913,
-   "status": "ok"
+   "status": "ok",
+   "previous_date": "2026-11-01",
+   "previous_value": 7.913,
+   "new_observation": false
   },
   {
    "indicator": "Carry: Selic minus Fed funds",
