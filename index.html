@@ -135,7 +135,7 @@ const ORDER = [
 ];
 const PANELS = { fiscal: [["Gross general government debt"], ["Primary balance (12m)"]] };
 const ZERO_LINE = new Set(["real_rate", "carry", "ibcbr", "ca", "fiscal"]);
-const DIGITS = { ptax: 4, reer: 1, ipca: 2, focus: 2, selic: 2, real_rate: 2, carry: 2, vol: 1, ibcbr: 1, unemp: 1, ca: 2, fiscal: 1 };
+const DIGITS = { ptax: 4, reer: 1, ipca: 2, focus: 2, selic: 2, real_rate: 2, carry: 2, vol: 1, ibcbr: 2, unemp: 1, ca: 2, fiscal: 1 };
 // Inflation target history (CMN). Centre and tolerance (pp) by calendar year; continuous 3.0 +/- 1.5 from 2025.
 const TARGETS = { 2010: [4.5, 2], 2011: [4.5, 2], 2012: [4.5, 2], 2013: [4.5, 2], 2014: [4.5, 2], 2015: [4.5, 2], 2016: [4.5, 2],
   2017: [4.5, 1.5], 2018: [4.5, 1.5], 2019: [4.25, 1.5], 2020: [4.0, 1.5], 2021: [3.75, 1.5], 2022: [3.5, 1.5], 2023: [3.25, 1.5], 2024: [3.0, 1.5] };
@@ -147,7 +147,7 @@ const svgEl = (tag, attrs = {}) => { const e = document.createElementNS("http://
 const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 const isMonthly = s => /^Monthly/.test(s.frequency);
 const fmtDate = (iso, monthly) => { const [y, m, d] = iso.split("-").map(Number); return monthly ? `${MONTHS[m-1]} ${y}` : `${d} ${MONTHS[m-1]} ${y}`; };
-const fmtNum = (v, dg) => v.toLocaleString("en-US", { minimumFractionDigits: dg, maximumFractionDigits: dg });
+const fmtNum = (v, dg) => (Math.abs(v) < 0.5 * 10 ** -dg ? 0 : v).toLocaleString("en-US", { minimumFractionDigits: dg, maximumFractionDigits: dg });
 const fmtTs = iso => {
   if (!iso) return "never";
   const d = new Date(iso);
