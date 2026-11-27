@@ -1,7 +1,7 @@
 {
- "run_utc": "2026-11-26T20:14:14Z",
+ "run_utc": "2026-11-27T03:38:00Z",
  "run_status": "ok",
- "last_successful_refresh_utc": "2026-11-26T20:14:14Z",
+ "last_successful_refresh_utc": "2026-11-27T03:38:00Z",
  "errors": {},
  "indicators": [
   {
@@ -11,9 +11,9 @@
    "latest_date": "2026-11-26",
    "latest_value": 5.7446,
    "status": "ok",
-   "previous_date": "2026-11-25",
-   "previous_value": 5.8825,
-   "new_observation": true
+   "previous_date": "2026-11-26",
+   "previous_value": 5.7446,
+   "new_observation": false
   },
   {
    "indicator": "Real effective exchange rate",
@@ -52,12 +52,12 @@
    "indicator": "Policy rate (Selic target)",
    "line": "Selic target",
    "units": "% per year",
-   "latest_date": "2026-11-26",
+   "latest_date": "2026-11-27",
    "latest_value": 13.75,
    "status": "ok",
    "previous_date": "2026-11-26",
    "previous_value": 13.75,
-   "new_observation": false
+   "new_observation": true
   },
   {
    "indicator": "Ex-ante real policy rate",
@@ -74,12 +74,12 @@
    "indicator": "Carry: Selic minus Fed funds",
    "line": "Selic minus Fed funds (midpoint)",
    "units": "Percentage points",
-   "latest_date": "2026-11-26",
+   "latest_date": "2026-11-27",
    "latest_value": 9.875,
    "status": "ok",
    "previous_date": "2026-11-26",
    "previous_value": 9.875,
-   "new_observation": false
+   "new_observation": true
   },
   {
    "indicator": "BRL realized volatility",
@@ -88,9 +88,9 @@
    "latest_date": "2026-11-26",
    "latest_value": 19.92,
    "status": "ok",
-   "previous_date": "2026-11-25",
-   "previous_value": 34.16,
-   "new_observation": true
+   "previous_date": "2026-11-26",
+   "previous_value": 19.92,
+   "new_observation": false
   },
   {
    "indicator": "Economic activity (IBC-Br)",
@@ -121,9 +121,9 @@
    "latest_date": "2026-10-01",
    "latest_value": -2.34,
    "status": "ok",
-   "previous_date": "2026-09-01",
-   "previous_value": -2.33,
-   "new_observation": true
+   "previous_date": "2026-10-01",
+   "previous_value": -2.34,
+   "new_observation": false
   },
   {
    "indicator": "Current account and FDI",
@@ -132,9 +132,9 @@
    "latest_date": "2026-10-01",
    "latest_value": 3.38,
    "status": "ok",
-   "previous_date": "2026-09-01",
-   "previous_value": 3.43,
-   "new_observation": true
+   "previous_date": "2026-10-01",
+   "previous_value": 3.38,
+   "new_observation": false
   },
   {
    "indicator": "Fiscal: gross debt and primary balance",
