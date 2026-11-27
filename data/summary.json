@@ -1,19 +1,19 @@
 {
- "run_utc": "2026-11-27T03:38:00Z",
+ "run_utc": "2026-11-27T20:00:23Z",
  "run_status": "ok",
- "last_successful_refresh_utc": "2026-11-27T03:38:00Z",
+ "last_successful_refresh_utc": "2026-11-27T20:00:23Z",
  "errors": {},
  "indicators": [
   {
    "indicator": "Nominal exchange rate",
    "line": "BRL per USD",
    "units": "BRL per USD",
-   "latest_date": "2026-11-26",
-   "latest_value": 5.7446,
+   "latest_date": "2026-11-27",
+   "latest_value": 5.543,
    "status": "ok",
    "previous_date": "2026-11-26",
    "previous_value": 5.7446,
-   "new_observation": false
+   "new_observation": true
   },
   {
    "indicator": "Real effective exchange rate",
@@ -55,9 +55,9 @@
    "latest_date": "2026-11-27",
    "latest_value": 13.75,
    "status": "ok",
-   "previous_date": "2026-11-26",
+   "previous_date": "2026-11-27",
    "previous_value": 13.75,
-   "new_observation": true
+   "new_observation": false
   },
   {
    "indicator": "Ex-ante real policy rate",
@@ -77,20 +77,20 @@
    "latest_date": "2026-11-27",
    "latest_value": 9.875,
    "status": "ok",
-   "previous_date": "2026-11-26",
+   "previous_date": "2026-11-27",
    "previous_value": 9.875,
-   "new_observation": true
+   "new_observation": false
   },
   {
    "indicator": "BRL realized volatility",
    "line": "21-day realized vol",
    "units": "% annualized",
-   "latest_date": "2026-11-26",
-   "latest_value": 19.92,
+   "latest_date": "2026-11-27",
+   "latest_value": 21.01,
    "status": "ok",
    "previous_date": "2026-11-26",
    "previous_value": 19.92,
-   "new_observation": false
+   "new_observation": true
   },
   {
    "indicator": "Economic activity (IBC-Br)",
@@ -107,12 +107,12 @@
    "indicator": "Unemployment rate",
    "line": "Unemployment rate",
    "units": "% of labour force",
-   "latest_date": "2026-09-01",
-   "latest_value": 5.2,
+   "latest_date": "2026-10-01",
+   "latest_value": 5.1,
    "status": "ok",
    "previous_date": "2026-09-01",
    "previous_value": 5.2,
-   "new_observation": false
+   "new_observation": true
   },
   {
    "indicator": "Current account and FDI",
