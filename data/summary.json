@@ -1,7 +1,7 @@
 {
- "run_utc": "2026-11-27T20:00:23Z",
+ "run_utc": "2026-11-28T03:17:46Z",
  "run_status": "ok",
- "last_successful_refresh_utc": "2026-11-27T20:00:23Z",
+ "last_successful_refresh_utc": "2026-11-28T03:17:46Z",
  "errors": {},
  "indicators": [
   {
@@ -11,9 +11,9 @@
    "latest_date": "2026-11-27",
    "latest_value": 5.543,
    "status": "ok",
-   "previous_date": "2026-11-26",
-   "previous_value": 5.7446,
-   "new_observation": true
+   "previous_date": "2026-11-27",
+   "previous_value": 5.543,
+   "new_observation": false
   },
   {
    "indicator": "Real effective exchange rate",
@@ -52,12 +52,12 @@
    "indicator": "Policy rate (Selic target)",
    "line": "Selic target",
    "units": "% per year",
-   "latest_date": "2026-11-27",
+   "latest_date": "2026-11-28",
    "latest_value": 13.75,
    "status": "ok",
    "previous_date": "2026-11-27",
    "previous_value": 13.75,
-   "new_observation": false
+   "new_observation": true
   },
   {
    "indicator": "Ex-ante real policy rate",
@@ -74,12 +74,12 @@
    "indicator": "Carry: Selic minus Fed funds",
    "line": "Selic minus Fed funds (midpoint)",
    "units": "Percentage points",
-   "latest_date": "2026-11-27",
+   "latest_date": "2026-11-28",
    "latest_value": 9.875,
    "status": "ok",
    "previous_date": "2026-11-27",
    "previous_value": 9.875,
-   "new_observation": false
+   "new_observation": true
   },
   {
    "indicator": "BRL realized volatility",
@@ -88,9 +88,9 @@
    "latest_date": "2026-11-27",
    "latest_value": 21.01,
    "status": "ok",
-   "previous_date": "2026-11-26",
-   "previous_value": 19.92,
-   "new_observation": true
+   "previous_date": "2026-11-27",
+   "previous_value": 21.01,
+   "new_observation": false
   },
   {
    "indicator": "Economic activity (IBC-Br)",
@@ -110,9 +110,9 @@
    "latest_date": "2026-10-01",
    "latest_value": 5.1,
    "status": "ok",
-   "previous_date": "2026-09-01",
-   "previous_value": 5.2,
-   "new_observation": true
+   "previous_date": "2026-10-01",
+   "previous_value": 5.1,
+   "new_observation": false
   },
   {
    "indicator": "Current account and FDI",
